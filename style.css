@@ -37,18 +37,6 @@ header{
     z-index: 100;
 }
 
-.logo{
-    font-size: 3rem;
-    color: #dd6981;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.5s ease;
-}
-
-.logo:hover{
-    transform: scale(1.1);
-}
-
 section{
     min-height: 100vh;
     padding: 5rem 9% 5rem;
@@ -62,17 +50,17 @@ section{
     background-color: #ffd9da;
 }
 
-.home .home-content h1{
+.home-content h1{
     font-size: 6rem;
     font-weight: 700;
     line-height: 1.3;
 }
 
-span{
+.home-content h1 span{
     color: #dd6981;
 }
 
-.home-content h3{
+.home-content h2{
     font-size: 4rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -125,6 +113,7 @@ span{
 .btn{
     display: inline-block;
     padding: 1rem 2.8rem;
+    margin: 1rem 1.5rem 3rem 0;
     background-color: #ffd9da;
     border-radius: 4rem;
     font-size: 1.6rem;
@@ -143,35 +132,57 @@ span{
     box-shadow: 0 0 25px #dd6981;
 }
 
-.typing-text{
-    font-size: 34px;
-    font-weight: 600;
-    min-width: 280px;
+.typewriter {
+    display: flex;
+    align-items: center;
 }
 
-.typing-text span{
-    position: relative;
+.typewriter ol{
+    list-style: none;
+    --height: 5rem;
+    height: var(--height);
+    line-height: var(--height);
+    overflow: hidden;
+
+    margin-left: 1rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+
+.typewriter ol li{
+    animation: slide calc(2*3*2s) steps(2) infinite;
+}
+
+@keyframes slide{
+    100%{
+        transform: translateY(-200%);
+    }
+}
+
+.typewriter ol li span{
+    -webkit-text-fill-color: transparent;
+    background: #dd6981;
+    background-clip: text;
+    -webkit-background-clip: text;
+    white-space: nowrap;
+
     display: inline-block;
-}
+    width: 0%;
 
-.typing-text span::before{
-    content: "Software Engineer";
-    color: #dd6981;
-    animation: words 20s infinite;
-}
+    border-right: .3rem solid #dd6981;
+    animation: cursor .8s steps(18) infinite, typing 3s infinite alternate;
 
-.typing-text span::after{
-    content: "";
-    background-color: #ffd9da;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-left: 2px solid #dd6981;
-    animation: cursor .4s step-end infinite alternate;
 }
 
 @keyframes cursor{
     50% { border-color: transparent; }
+}
+
+@keyframes typing{
+    0%, 10% { width: -5%; }
+    70%, 100% {width: 100%;}
 }
 
 @media(max-width:995px){
@@ -186,7 +197,7 @@ span{
         margin: 5rem 4rem;
     }
 
-    .home .home-content h3{
+    .home-content h2{
         font-size: 2.5rem;
     }
 
@@ -195,7 +206,7 @@ span{
     }
 
     .home-img img{
-        width: 70vh;
+        width: 50vh;
         margin-top: 4rem;
     }
 }
